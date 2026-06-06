@@ -30,7 +30,6 @@ fn test_submit_without_metadata_backward_compat() {
         &0i128,
         &None,
         &None,
-        &0u64,
     );
 
     let att = client.get_attestation(&business, &period).unwrap();
@@ -183,7 +182,6 @@ fn test_metadata_missing_for_old_attestation() {
         &0i128,
         &None,
         &None,
-        &0u64,
     );
 
     assert!(client.get_attestation(&business, &period).is_some());

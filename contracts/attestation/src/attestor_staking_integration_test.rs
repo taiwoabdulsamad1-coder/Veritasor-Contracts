@@ -1286,7 +1286,7 @@ fn attestor_submission_fails_when_paused() {
     staking.stake(&attestor, &1_000i128);
 
     // Pause the contract
-    att_client.pause(&admin, &0u64);
+    att_client.pause(&admin, &1u64);
 
     let business = Address::generate(&env);
     let period = String::from_str(&env, "2026-02");
@@ -1342,7 +1342,7 @@ fn batch_submission_fails_when_paused() {
     staking.stake(&attestor, &1_000i128);
 
     // Pause the contract
-    att_client.pause(&admin, &0u64);
+    att_client.pause(&admin, &1u64);
 
     let business = Address::generate(&env);
     let mut items = Vec::new(&env);

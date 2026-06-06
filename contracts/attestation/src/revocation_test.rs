@@ -83,7 +83,7 @@ impl TestEnv {
     }
 
     pub fn pause(&self, admin: Address) {
-        self.client.pause(&admin, &0u64);
+        self.client.pause(&admin, &1u64);
     }
 
     pub fn get_attestation_with_status(
@@ -1233,6 +1233,7 @@ fn test_closed_dispute_no_reopen_after_revoke() {
 //   8. Revocation of a non-existent attestation is rejected cleanly.
 
 use super::*;
+use soroban_sdk::{Address, BytesN, Env, String};
 
 /// Minimal test harness: registered contract + mock auths + initialized admin.
 fn setup_index_env() -> (Env, AttestationContractClient<'static>, Address) {
@@ -1684,7 +1685,7 @@ fn test_paused_revocation_does_not_corrupt_index() {
         &None,
     );
 
-    client.pause(&admin, &0u64);
+    client.pause(&admin, &1u64);
 
     let seq_before = client.get_revocation_sequence();
 

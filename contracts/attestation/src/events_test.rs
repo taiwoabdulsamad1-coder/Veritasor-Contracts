@@ -108,9 +108,9 @@ fn test_submit_attestation_emits_event() {
         &1_700_000_000u64,
         &1u32,
         &0i128,
+        &0i128,
         &None,
         &None,
-        &0u64,
     );
 
     assert!(
@@ -833,15 +833,15 @@ fn test_revoke_role_emits_event() {
 #[test]
 fn test_pause_emits_event() {
     let (env, client, admin) = setup();
-    client.pause(&admin, &0u64);
+    client.pause(&admin, &1u64);
     assert!(!env.events().all().is_empty());
 }
 
 #[test]
 fn test_unpause_emits_event() {
     let (env, client, admin) = setup();
-    client.pause(&admin, &0u64);
-    client.unpause(&admin, &0u64);
+    client.pause(&admin, &2u64);
+    client.unpause(&admin, &3u64);
     assert!(!env.events().all().is_empty());
 }
 

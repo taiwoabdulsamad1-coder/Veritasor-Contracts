@@ -27,7 +27,7 @@ fn setup() -> (Env, AttestationContractClient<'static>, Address) {
 
 fn setup_with_short_rotation_config() -> (Env, AttestationContractClient<'static>, Address) {
     let (env, client, admin) = setup();
-    // Set short timelock for testing: 10 ledgers timelock, 20 window, 5 cooldown, 10 grace
+    // Set short timelock for testing: 10 ledgers timelock, 20 window, 5 cooldown
     client.configure_key_rotation(&RotationConfig {
         timelock_ledgers: 10,
         confirmation_window_ledgers: 20,
@@ -70,10 +70,10 @@ fn setup_with_multisig() -> (
 fn test_configure_key_rotation() {
     let (_env, client, _admin) = setup();
     client.configure_key_rotation(&RotationConfig {
-        timelock_ledgers: 100,
-        confirmation_window_ledgers: 200,
-        cooldown_ledgers: 50,
-        grace_period_ledgers: 100,
+        timelock_ledgers: 10,
+        confirmation_window_ledgers: 20,
+        cooldown_ledgers: 5,
+        grace_period_ledgers: 10,
     });
 
     let config = client.get_key_rotation_config();
